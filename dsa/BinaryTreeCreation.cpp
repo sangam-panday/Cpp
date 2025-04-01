@@ -30,6 +30,22 @@ void Display(struct node *node){
     cout<<node->data<<" ";
     Display(node->right);
 }
+void PreDisplay(struct node *node){
+    if(node == NULL){
+        return;
+    }
+    cout<<node->data<<" ";
+    Display(node->left);
+    Display(node->right);
+}
+void PostDisplay(struct node *node){
+    if(node == NULL){
+        return;
+    }
+    Display(node->left);
+    Display(node->right);
+    cout<<node->data<<" ";
+}
 struct node* deletenode(struct node* root, int key) {
     if (root == NULL) return root;
     if (key < root->data) {
@@ -59,10 +75,15 @@ int main() {
     root = InsertNode(root, 45);
     root = InsertNode(root, 60);
     root = InsertNode(root, 80);
-    root = deletenode(root, 20);
 
     cout << "Inorder Traversal of BST: ";
     Display(root);
+    cout << endl;
+    cout << "Preorder Traversal of BST: ";
+    PreDisplay(root);
+    cout << endl;
+    cout << "Postorder Traversal of BST: ";
+    PostDisplay(root);
     cout << endl;
 
     return 0;
